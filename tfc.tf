@@ -46,7 +46,7 @@ resource "tfe_variable" "TFC_VAULT_NAMESPACE" {
 
   category = "env"
   key      = "TFC_VAULT_NAMESPACE"
-  value    = vault_jwt_auth_backend_role.admin.namespace
+  value    = "admin/${vault_namespace.instruqt.path_fq}"
 }
 resource "tfe_variable" "TFC_VAULT_AUTH_PATH" {
   variable_set_id = tfe_variable_set.vault-trust-gcp.id
