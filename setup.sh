@@ -36,13 +36,10 @@ export TFE_TOKEN=$TFE_TOKEN
 export VAULT_ADDR=$VAULT_ADDR
 export VAULT_TOKEN=$VAULT_TOKEN
 EOM
-
 source credentials.env
-
-[ -z "${GOOGLE_CREDENTIALS}" ] || echo "${GOOGLE_CREDENTIALS}" > credentials.json
 
 cat >> terraform.tfvars <<EOM
 terraform_organization="$TFE_ORGANIZATION"
-# vault_address="$VAULT_ADDR"
+vault_address="$VAULT_ADDR"
 EOM
 exit 0

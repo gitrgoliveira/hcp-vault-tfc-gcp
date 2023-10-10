@@ -3,6 +3,7 @@ provider "google" {
 
 data "google_project" "current" {
 }
+
 resource "google_service_account" "secrets_engine" {
   account_id   = "vault-secrets-engine"
   display_name = "Vault Secrets Engine"

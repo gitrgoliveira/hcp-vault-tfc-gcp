@@ -3,20 +3,6 @@ provider "vault" {
   address   = var.vault_address
 }
 
-# locals {
-#   vault_token = jsondecode(file("./keys.json")).root_token
-# }
-
-
-
-# resource "vault_audit" "audit" {
-#   type = "file"
-#   options = {
-#     file_path = "stdout"
-#   }
-
-# }
-
 resource "vault_namespace" "instruqt" {
   path = "instruqt"
 }
