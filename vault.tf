@@ -8,7 +8,7 @@ resource "vault_namespace" "instruqt" {
 }
 
 resource "vault_jwt_auth_backend" "tfc" {
-  namespace          = vault_namespace.instruqt.namespace
+  namespace          = vault_namespace.instruqt.path_fq
   description        = "Terraform Cloud JWT auth backend"
   path               = "jwt"
   oidc_discovery_url = "https://app.terraform.io"
@@ -17,7 +17,7 @@ resource "vault_jwt_auth_backend" "tfc" {
 }
 
 resource "vault_policy" "admin" {
-  namespace = vault_namespace.instruqt.namespace
+  namespace = vault_namespace.instruqt.path_fq
   name      = "admin"
   policy    = <<EOP
     # Allow tokens to query themselves
@@ -55,7 +55,7 @@ EOP
 }
 
 resource "vault_jwt_auth_backend_role" "admin" {
-  namespace         = vault_namespace.instruqt.namespace
+  namespace         = vault_namespace.instruqt.path_fq
   backend           = vault_jwt_auth_backend.tfc.path
   role_name         = "admin"
   role_type         = "jwt"
