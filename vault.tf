@@ -4,7 +4,7 @@ provider "vault" {
 }
 
 resource "vault_namespace" "instruqt" {
-  path = "instruqt"
+  path = "demo_${random_id.default.hex}"
 }
 
 resource "vault_jwt_auth_backend" "tfc" {
